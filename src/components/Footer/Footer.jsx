@@ -3,6 +3,7 @@ import { FaDiscord, FaGithub, FaInstagram, FaLinkedin, FaRss } from 'react-icons
 import { FaXTwitter } from 'react-icons/fa6';
 import { MdEmail } from 'react-icons/md';
 import { SiMastodon, SiMatrix } from 'react-icons/si';
+import logo from '../../assets/techdesk_logo2.png'
 
 const Footer = () => {
     return (
@@ -12,7 +13,7 @@ const Footer = () => {
                 <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-10">
                     {/* Left Side */}
                     <div>
-                        <h2 className="text-white font-semibold text-xl mb-2">ente</h2>
+                        <img className='w-[150px] mb-5' src={logo} alt="" />
                         <p className="text-sm text-gray-400 mb-4">
                             Private cloud for your memories, with apps for mobile, desktop and web.
                         </p>
