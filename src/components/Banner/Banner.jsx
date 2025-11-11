@@ -8,7 +8,7 @@ import { Link } from 'react-router';
 const Banner = () => {
     return (
         <div
-            className="w-full min-h-[550px] bg-cover bg-bottom"
+            className="w-full min-h-[550px] bg-cover bg-bottom mt-[200px] md:mt-[65px]"
             style={{ backgroundImage: `url(${banBg})` }}
         >
             <MyContainer>
@@ -33,7 +33,7 @@ const Banner = () => {
 
                     {/* RIGHT SIDE - Image Animation */}
                     <motion.div
-                        className="right bg-[#525D53] h-fit flex justify-center items-center pt-20 mt-20 rounded-4xl"
+                        className="right bg-[#525D53] h-fit flex justify-center items-center pt-20 mt-25 rounded-4xl"
                         initial={{ opacity: 0, x: 80 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
