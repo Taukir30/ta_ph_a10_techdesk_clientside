@@ -7,7 +7,7 @@ import logo from '../../assets/techdesk_logo2.png'
 
 const Footer = () => {
     return (
-        <div className="bg-[#3F4B3F] text-gray-400 px-8 md:px-16 py-12">
+        <div className="bg-[#0F172B] text-gray-400 px-8 md:px-16 py-12">
             <div className="max-w-7xl mx-auto">
                 {/* Top section */}
                 <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-10">

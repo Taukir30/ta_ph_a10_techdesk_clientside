@@ -9,7 +9,7 @@ import { AuthContext } from '../../provider/AuthContext';
 
 const Navbar = () => {
 
-    const { user, logOut, loading } = use(AuthContext);
+    const { user, logOut } = use(AuthContext);
     // console.log(user);
 
     const handleLogOut = () => {
@@ -30,7 +30,7 @@ const Navbar = () => {
     // }
 
     return (
-        <div className='bg-[#FBF8EE] border-b border-[#00525d]'>
+        <div className='bg-[#FBF8EE] border-b border-[#00525d] w-full fixed top-0 left-0'>
             <div className="navbar w-[95%] mx-auto ">
                 <div className="navbar-start">
                     <div className="dropdown">
