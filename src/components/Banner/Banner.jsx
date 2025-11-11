@@ -7,10 +7,7 @@ import { Link } from 'react-router';
 
 const Banner = () => {
     return (
-        <div
-            className="w-full min-h-[550px] bg-cover bg-bottom mt-[200px] md:mt-[65px]"
-            style={{ backgroundImage: `url(${banBg})` }}
-        >
+        <div className="w-full min-h-[550px] bg-cover bg-bottom mt-[200px] md:mt-[65px]" style={{ backgroundImage: `url(${banBg})` }} >
             <MyContainer>
                 <div className="flex flex-col-reverse md:flex-row justify-between h-[500px] mt-15">
 

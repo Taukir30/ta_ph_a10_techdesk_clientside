@@ -11,7 +11,7 @@ import { Link } from 'react-router';
 
 const Categories = () => {
     return (
-        <section className="py-16 sm:py-24">
+        <section className="py-10 sm:py-24">
             <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                 {/* Section Header */}
                 <div className="text-center mb-12">

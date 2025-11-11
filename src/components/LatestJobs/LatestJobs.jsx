@@ -1,36 +1,39 @@
-import React, { useEffect, useState } from 'react';
+
 import { Link } from 'react-router';
 import JobContainer from '../JobContainer/JobContainer';
 import MyContainer from '../MyContainer/MyContainer';
-import useAxios from '../../hooks/useAxios';
+
 import Loading from '../Loading/Loading'
+import { useEffect, useState } from 'react';
+import useAxios from '../../hooks/useAxios';
+
 
 const LatestJobs = () => {
 
-    // const [latestJobs, setLatestJobs] = useState([]);
-    // const [loading, setLoading] = useState(true);
+    const [latestJobs, setLatestJobs] = useState([]);
+    const [loading, setLoading] = useState(true);
 
-    // const axiosInstance = useAxios();
+    const axiosInstance = useAxios();
 
-    // useEffect( () => {
-    //     setLoading(true);
+    useEffect(() => {
+        setLoading(true);
 
-    //     axiosInstance.get('/latest-jobs')
-    //         .then( data => {
-    //             // console.log(data.data)
-    //             setLatestJobs(data.data);
-    //             setLoading(false);
-    //         })
-    // }, [axiosInstance])
+        axiosInstance.get('/latest-jobs')
+            .then(data => {
+                // console.log(data.data)
+                setLatestJobs(data.data);
+                setLoading(false);
+            })
+    }, [axiosInstance])
 
-    // // console.log(latestJobs)
+    // console.log(latestJobs)
 
-    // if(loading){
-    //     return <Loading></Loading>
-    // }
+    if (loading) {
+        return <Loading></Loading>
+    }
 
     return (
-        <section className="py-16 sm:py-24">
+        <section className="py-8 sm:py-24">
             <MyContainer>
                 <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl">
 
@@ -40,7 +43,7 @@ const LatestJobs = () => {
                         <Link href="#" className="flex items-center text-sm font-medium text-blue-600 hover:text-blue-800 transition-colors"  >
                             Browse All Jobs
                             {/* Arrow Icon */}
-                            <svg  xmlns="http://www.w3.org/2000/svg" width={20} height={20} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}  strokeLinecap="round" strokeLinejoin="round" className="ml-1" >
+                            <svg xmlns="http://www.w3.org/2000/svg" width={20} height={20} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className="ml-1" >
                                 <line x1={5} y1={12} x2={19} y2={12} />
                                 <polyline points="12 5 19 12 12 19" />
                             </svg>
@@ -48,7 +51,7 @@ const LatestJobs = () => {
                     </div>
 
                     {/* Job List Container */}
-                    <JobContainer ></JobContainer>
+                    <JobContainer jobs={latestJobs}></JobContainer>
 
                 </div>
             </MyContainer>
