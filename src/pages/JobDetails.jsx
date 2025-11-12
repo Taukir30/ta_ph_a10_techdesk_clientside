@@ -4,6 +4,7 @@ import { Link, useParams } from 'react-router';
 import Loading from '../components/Loading/Loading';
 import noJob from '../assets/nojob.png'
 import MyContainer from '../components/MyContainer/MyContainer';
+import { toast } from 'react-toastify';
 
 const JobDetails = () => {
 
@@ -26,6 +27,30 @@ const JobDetails = () => {
     }, [axiosInstance, id])
 
     console.log(details)
+
+    const handleAccept = () => {
+
+        const accepedJob = {
+                job: details._id,
+                title: details.title,
+                postedBy: details.postedBy,
+                category: details.category,
+                summary: details.summary,
+                coverImage: details.coverImage,
+                userEmail: details.userEmail,
+                created_at: details.created_at
+        }
+
+        console.log(accepedJob);
+
+        axiosInstance.post('/accept-task', accepedJob)
+            .then( data => {
+                console.log(data.data);
+                if(data.data.insertedId){
+                    toast("Job Accepted!");
+                }
+            })
+    }
 
     if (loading) {
         return <Loading></Loading>
@@ -192,7 +217,7 @@ const JobDetails = () => {
                             <h3 className="text-xl font-semibold text-gray-900">
                                 Accept this Task
                             </h3>
-                            <button className="block w-full text-center bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-5 rounded-lg transition-colors mt-6"                   >
+                            <button onClick={handleAccept} className="block w-full text-center bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-5 rounded-lg transition-colors mt-6" >
                                 Accept
                             </button>
                             

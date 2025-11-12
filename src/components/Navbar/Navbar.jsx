@@ -3,13 +3,14 @@ import navLogo from '../../assets/techdesk_logo2.png'
 
 import { Link, NavLink } from 'react-router';
 import { AuthContext } from '../../provider/AuthContext';
+import Loading from '../Loading/Loading';
 // import { AuthContext } from '../provider/AuthContext';
 // import { toast } from 'react-toastify';
 // import Loading from './Loading';
 
 const Navbar = () => {
 
-    const { user, logOut } = use(AuthContext);
+    const { user, logOut, loading } = use(AuthContext);
     // console.log(user);
 
     const handleLogOut = () => {
@@ -20,14 +21,14 @@ const Navbar = () => {
     const navItems = <>
         <li><NavLink to='/'>Home</NavLink></li>
         <li><NavLink to='/alljobs'>All Jobs</NavLink></li>
-        <li><NavLink to='/allproducts'>Add a Job</NavLink></li>
-        <li><NavLink to='/profile'>My Jobs</NavLink></li>
+        <li><NavLink to='/addjob'>Add a Job</NavLink></li>
+        <li><NavLink to='/myjobs'>My Jobs</NavLink></li>
         <li><NavLink to='/mytoys'>My Accepted Jobs</NavLink></li>
     </>
 
-    // if (loading) {
-    //     return <Loading></Loading>
-    // }
+    if (loading) {
+        return <Loading></Loading>
+    }
 
     return (
         <div className='bg-[#FBF8EE] border-b border-[#00525d] w-full fixed top-0 left-0 z-10'>
