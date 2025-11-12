@@ -57,7 +57,7 @@ const MyCard = ({ job, myJobs, setMyJobs }) => {
             </div>
             {/* Apply Button */}
             <div className="mt-4 sm:mt-0 sm:ml-6 shrink-0 flex flex-row justify-center gap-2">
-                <Link to={`/jobdetails/${job._id}`} className="btn shadow-none btn-success w-20 rounded-4xl">Edit</Link>
+                <Link to={`/updatejob/${job._id}`} className="btn shadow-none btn-success w-20 rounded-4xl">Edit</Link>
                 <button onClick={handleDelete} className='btn shadow-none btn-error w-20 rounded-4xl'>Delete</button>
             </div>
         </div>
