@@ -15,7 +15,7 @@ const Categories = () => {
             <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                 {/* Section Header */}
                 <div className="text-center mb-12">
-                    <h2 className="text-3xl sm:text-4xl font-bold text-primary mb-3">
+                    <h2 className="text-3xl sm:text-4xl font-bold text-info mb-3">
                         Popular Categories
                     </h2>
                     <p className="text-lg text-gray-600">

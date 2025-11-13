@@ -39,7 +39,7 @@ const LatestJobs = () => {
 
                     {/* Section Header */}
                     <div className="flex justify-between items-center mb-8">
-                        <h2 className="text-3xl font-bold text-gray-900">Latest Jobs</h2>
+                        <h2 className="text-3xl font-bold text-info">Latest Jobs</h2>
                         <Link to='/alljobs' className="flex items-center text-sm font-medium text-blue-600 hover:text-blue-800 transition-colors"  >
                             Browse All Jobs
                             {/* Arrow Icon */}

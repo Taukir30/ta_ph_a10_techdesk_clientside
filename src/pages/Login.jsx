@@ -69,13 +69,13 @@ const Login = () => {
             <div className="lg:col-span-2 w-full p-8 max-w-lg mx-auto">
                 <form onSubmit={handleLogin}>
                     <div className="mb-8">
-                        <h1 className="text-slate-900 text-2xl font-bold">Login Now</h1>
+                        <h1 className="text-info text-2xl font-bold">Login Now</h1>
                     </div>
 
                     <div className="space-y-6">
 
                         <div>
-                            <label className="text-slate-900 text-sm font-medium mb-2 block">Email</label>
+                            <label className="text-info text-sm font-medium mb-2 block">Email</label>
                             <div className="relative flex items-center">
                                 <input name="email" type="email" required className="text-slate-900 bg-white border border-gray-300 w-full text-sm pl-4 pr-8 py-2.5 rounded-md outline-blue-500" placeholder="Enter email" />
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="#bbb" stroke="#bbb" className="w-4 h-4 absolute right-4" viewBox="0 0 682.667 682.667">
@@ -92,7 +92,7 @@ const Login = () => {
                             </div>
                         </div>
                         <div>
-                            <label className="text-slate-900 text-sm font-medium mb-2 block">Password</label>
+                            <label className="text-info text-sm font-medium mb-2 block">Password</label>
                             <div className="relative flex items-center">
                                 <input name="password" type={passToggle ? "text" : "password"} required className="text-slate-900 bg-white border border-gray-300 w-full text-sm pl-4 pr-8 py-2.5 rounded-md outline-blue-500" placeholder="Enter password" />
                                 <button onClick={handleToggle}>

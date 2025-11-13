@@ -50,7 +50,7 @@ const AddJob = () => {
     return (
         <div className='mt-[60px] p-1 md:p-12'>
             <MyContainer>
-                <h2 className="text-3xl sm:text-3xl text-center font-bold text-primary mb-5">
+                <h2 className="text-3xl sm:text-3xl text-center font-bold text-info mb-5">
                     Add New Job
                 </h2>
                 <div className="mx-auto bg-white p-5 md:p-12 shadow-sm border border-gray-200 rounded-lg">
