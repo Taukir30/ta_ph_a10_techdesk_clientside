@@ -18,7 +18,7 @@ const AcceptedJobs = () => {
     useEffect(() => {
         setLoading(true);
 
-        axiosInstance.get(`/alljobs?email=${user.email}`)
+        axiosInstance.get(`/my-accepted-tasks?email=${user.email}`)
             .then(data => {
                 // console.log(data.data)
                 setAcceptedJobs(data.data);

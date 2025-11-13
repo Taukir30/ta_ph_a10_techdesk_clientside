@@ -1,12 +1,15 @@
-import React, { useEffect, useState } from 'react';
+import React, { use, useEffect, useState } from 'react';
 import useAxios from '../hooks/useAxios';
 import { Link, useParams } from 'react-router';
 import Loading from '../components/Loading/Loading';
 import noJob from '../assets/nojob.png'
 import MyContainer from '../components/MyContainer/MyContainer';
 import { toast } from 'react-toastify';
+import { AuthContext } from '../provider/AuthContext';
 
 const JobDetails = () => {
+
+    const {user} = use(AuthContext);
 
     const { id } = useParams();
 
@@ -38,6 +41,7 @@ const JobDetails = () => {
                 summary: details.summary,
                 coverImage: details.coverImage,
                 userEmail: details.userEmail,
+                accepted_by: user.email,
                 created_at: details.created_at
         }
 
