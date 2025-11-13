@@ -17,7 +17,20 @@ const AcceptedCard = ({ job, acceptedJobs, setAcceptedJobs }) => {
 
                     toast("Job Cancelled !!!");
                 }
+            })
+    }
 
+    const handleDone = () => {
+
+        axiosInstance.delete(`/delete-accepted-task/${job._id}`)
+            .then(data => {
+                console.log(data.data)
+                if (data.data.acknowledged) {
+                    const newAcceptedList = acceptedJobs.filter( singleJob => singleJob._id !== job._id);
+                    setAcceptedJobs(newAcceptedList);
+
+                    toast("Job Done Successfully !!!");
+                }
             })
     }
 
@@ -56,7 +69,7 @@ const AcceptedCard = ({ job, acceptedJobs, setAcceptedJobs }) => {
             </div>
             {/* Apply Button */}
             <div className="mt-4 sm:mt-0 sm:ml-6 shrink-0 flex flex-row justify-center gap-2">
-                <button  className="btn shadow-none btn-success w-20 rounded-4xl">Done</button>
+                <button onClick={handleDone} className="btn shadow-none btn-success w-20 rounded-4xl">Done</button>
                 <button onClick={handleCancel} className='btn shadow-none btn-error w-20 rounded-4xl'>Cancel</button>
             </div>
         </div>

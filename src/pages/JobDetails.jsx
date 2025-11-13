@@ -1,6 +1,6 @@
 import React, { use, useEffect, useState } from 'react';
 import useAxios from '../hooks/useAxios';
-import { Link, useParams } from 'react-router';
+import { Link, useNavigate, useParams } from 'react-router';
 import Loading from '../components/Loading/Loading';
 import noJob from '../assets/nojob.png'
 import MyContainer from '../components/MyContainer/MyContainer';
@@ -17,6 +17,8 @@ const JobDetails = () => {
     const [loading, setLoading] = useState(true);
 
     const axiosInstance = useAxios();
+
+    const navigate = useNavigate();
 
     useEffect(() => {
         setLoading(true);
@@ -52,6 +54,7 @@ const JobDetails = () => {
                 console.log(data.data);
                 if(data.data.insertedId){
                     toast("Job Accepted!");
+                    navigate('/acceptedjobs');
                 }
             })
     }
