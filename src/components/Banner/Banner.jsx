@@ -17,7 +17,7 @@ const Banner = () => {
                         initial={{ opacity: 0, x: -80 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.8, ease: "easeOut" }}
-                        viewport={{ once: true, amount: 0.3 }}
+                        viewport={{ once: true, amount: 0.5 }}
                     >
                         <h1 className="text-4xl/snug tracking-wider font-bold text-white">
                             A Freelancing Platform You Can Truly Rely On
@@ -34,7 +34,7 @@ const Banner = () => {
                         initial={{ opacity: 0, x: 80 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
-                        viewport={{ once: true, amount: 0.3 }}
+                        viewport={{ once: true, amount: 0.5 }}
                     >
                         <img className="w-[500px] rounded" src={banImg} alt="banner" />
                     </motion.div>
