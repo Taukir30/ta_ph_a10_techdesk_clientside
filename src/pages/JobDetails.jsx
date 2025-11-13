@@ -31,7 +31,7 @@ const JobDetails = () => {
             })
     }, [axiosInstance, id])
 
-    console.log(details)
+    // console.log(details)
 
     const handleAccept = () => {
 
@@ -47,7 +47,7 @@ const JobDetails = () => {
                 created_at: details.created_at
         }
 
-        console.log(accepedJob);
+        // console.log(accepedJob);
 
         axiosInstance.post('/accept-task', accepedJob)
             .then( data => {

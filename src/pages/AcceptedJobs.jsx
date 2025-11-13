@@ -27,7 +27,7 @@ const AcceptedJobs = () => {
 
     }, [axiosInstance, user])
 
-    console.log(acceptedJobs)
+    // console.log(acceptedJobs)
 
     if (loading) {
         return <Loading></Loading>
