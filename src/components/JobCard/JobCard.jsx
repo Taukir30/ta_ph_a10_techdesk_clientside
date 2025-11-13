@@ -36,7 +36,7 @@ const JobCard = ({ job }) => {
                 </div>
             </div>
             {/* Apply Button */}
-            <div className="mt-4 sm:mt-0 sm:ml-6 shrink-0">
+            <div className="mt-4 sm:mt-0 sm:ml-6 shrink-0 flex justify-center">
                 <Link to={`/jobdetails/${job._id}`} className="btn shadow-none btn-success w-35 rounded-4xl">View Details</Link>
             </div>
         </div>

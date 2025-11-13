@@ -36,7 +36,7 @@ const Banner = () => {
                         transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
                         viewport={{ once: true, amount: 0.5 }}
                     >
-                        <img className="w-[500px] rounded" src={banImg} alt="banner" />
+                        <img className="w-[300px] md:w-[350px] lg:w-[500px] rounded" src={banImg} alt="banner" />
                     </motion.div>
                 </div>
             </MyContainer>

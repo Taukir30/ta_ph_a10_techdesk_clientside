@@ -34,13 +34,13 @@ const AcceptedJobs = () => {
     }
 
     return (
-        <section className="py-16 sm:py-24">
+        <section className="py-20 sm:py-24">
             <MyContainer>
-                <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl">
+                <div className="container mx-auto px-1 sm:px-6 lg:px-8 max-w-5xl">
 
                     {/* Section Header */}
                     <div className="flex justify-between items-center mb-8">
-                        <h2 className="text-3xl font-bold text-gray-900">My Accepted Jobs</h2>
+                        <h2 className="text-xl sm:text-3xl font-bold text-info">My Accepted Jobs</h2>
                         <Link to='/alljobs' className="flex items-center text-sm font-medium text-primary hover:text-blue-800 transition-colors"  >
                             All Jobs
                             {/* Arrow Icon */}
