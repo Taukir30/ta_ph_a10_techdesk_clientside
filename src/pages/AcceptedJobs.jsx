@@ -1,16 +1,16 @@
 import React, { use, useEffect, useState } from 'react';
-import MyCard from '../components/MyCard/MyCard';
+import { Link } from 'react-router';
+import MyContainer from '../components/MyContainer/MyContainer';
+import AcceptedCard from '../components/AcceptedCard/AcceptedCard';
+import { AuthContext } from '../provider/AuthContext';
 import useAxios from '../hooks/useAxios';
 import Loading from '../components/Loading/Loading';
-import { AuthContext } from '../provider/AuthContext';
-import MyContainer from '../components/MyContainer/MyContainer';
-import { Link } from 'react-router';
 
-const MyJobs = () => {
+const AcceptedJobs = () => {
 
-    const {user} = use(AuthContext);
+    const { user } = use(AuthContext);
 
-    const [myJobs, setMyJobs] = useState([]);
+    const [acceptedJobs, setAcceptedJobs] = useState([]);
     const [loading, setLoading] = useState(true);
 
     const axiosInstance = useAxios();
@@ -21,13 +21,13 @@ const MyJobs = () => {
         axiosInstance.get(`/alljobs?email=${user.email}`)
             .then(data => {
                 // console.log(data.data)
-                setMyJobs(data.data);
+                setAcceptedJobs(data.data);
                 setLoading(false);
             })
 
-    },[axiosInstance, user])
+    }, [axiosInstance, user])
 
-    // console.log(latestJobs)
+    console.log(acceptedJobs)
 
     if (loading) {
         return <Loading></Loading>
@@ -40,7 +40,7 @@ const MyJobs = () => {
 
                     {/* Section Header */}
                     <div className="flex justify-between items-center mb-8">
-                        <h2 className="text-3xl font-bold text-gray-900">My Posted Jobs</h2>
+                        <h2 className="text-3xl font-bold text-gray-900">My Accepted Jobs</h2>
                         <Link to='/alljobs' className="flex items-center text-sm font-medium text-blue-600 hover:text-blue-800 transition-colors"  >
                             All Jobs
                             {/* Arrow Icon */}
@@ -56,12 +56,12 @@ const MyJobs = () => {
                         <div className="divide-y divide-gray-200">
 
                             {
-                                myJobs.length === 0 && <h2 className='text-center p-5'>No Posted Job Found!</h2>
+                                acceptedJobs.length === 0 && <h2 className='text-center p-5'>No Accepted Job Found!</h2>
                             }
 
                             {/* Job card */}
                             {
-                                myJobs.map(job => <MyCard key={job._id} job={job} myJobs={myJobs} setMyJobs={setMyJobs}></MyCard>)
+                                acceptedJobs.map( job => <AcceptedCard key={job._id} job={job} acceptedJobs={acceptedJobs} setAcceptedJobs={setAcceptedJobs}></AcceptedCard>)
                             }
 
                         </div>
@@ -73,4 +73,4 @@ const MyJobs = () => {
     );
 };
 
-export default MyJobs;
+export default AcceptedJobs;

@@ -23,7 +23,7 @@ const Navbar = () => {
         <li><NavLink to='/alljobs'>All Jobs</NavLink></li>
         <li><NavLink to='/addjob'>Add a Job</NavLink></li>
         <li><NavLink to='/myjobs'>My Jobs</NavLink></li>
-        <li><NavLink to='/mytoys'>My Accepted Jobs</NavLink></li>
+        <li><NavLink to='/acceptedjobs'>My Accepted Jobs</NavLink></li>
     </>
 
     if (loading) {
