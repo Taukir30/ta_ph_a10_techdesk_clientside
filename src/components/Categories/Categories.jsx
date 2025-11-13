@@ -18,7 +18,7 @@ const Categories = () => {
                     <h2 className="text-3xl sm:text-4xl font-bold text-info mb-3">
                         Popular Categories
                     </h2>
-                    <p className="text-lg text-gray-600">
+                    <p className="text-lg text-primary">
                         Find the right industry for your career
                     </p>
                 </div>

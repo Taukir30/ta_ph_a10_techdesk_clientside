@@ -20,7 +20,7 @@
   --color-base-200: #f8fff8;
   --color-base-300: #f6fce8;
   --color-base-content: oklch(37% 0.077 168.94);
-  --color-primary: #8abf2c;
+  --color-primary: #ff8904;
   --color-primary-content: oklch(28% 0.066 53.813);
   --color-secondary: #88966a;
   --color-secondary-content: oklch(27% 0.077 45.635);
@@ -118,12 +118,11 @@
   --noise: 0;
 }
 
-
-
 body, .sans {
   font-family: "Roboto", sans-serif;
 }
 
-/* body{
-  background-color: #EEF9F2;
-} */
+.navbar ul li .active{
+  color: #ff8904;
+}
+

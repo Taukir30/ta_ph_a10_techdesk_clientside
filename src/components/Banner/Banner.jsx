@@ -25,7 +25,7 @@ const Banner = () => {
                         <p className="text-base-200">
                             Hire trusted freelancers and get your projects done on time
                         </p>
-                        <Link className="btn shadow-none btn-success w-35 rounded-4xl">Create a job</Link>
+                        <Link to='/addjob' className="btn shadow-none btn-success w-35 rounded-4xl">Create a job</Link>
                     </motion.div>
 
                     {/* RIGHT SIDE - Image Animation */}
