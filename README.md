@@ -4,8 +4,7 @@
 ## Overview:
     TechDesk is a robust, full-stack freelancing platform designed to bridge the gap between clients and skilled professionals. Built with the MERN stack, it provides a seamless ecosystem for task management and digital earning.
 
-# Live Site Link:
-    https://a10-tech-desk-client-side.netlify.app
+# Live Site Link: https://a10-tech-desk-client-side.netlify.app
     
 # Features:
     *Account registration with email and password
