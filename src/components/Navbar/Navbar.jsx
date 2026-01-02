@@ -1,5 +1,6 @@
 import React, { use } from 'react';
 import navLogo from '../../assets/techdesk_logo2.png'
+import logo from '../../assets/logo.png'
 
 import { Link, NavLink } from 'react-router';
 import { AuthContext } from '../../provider/AuthContext';
@@ -32,7 +33,7 @@ const Navbar = () => {
 
     return (
         <div className='bg-base-200 border-b border-[#00525d] w-full fixed top-0 left-0 z-10'>
-            <div className="navbar w-[95%] mx-auto ">
+            <div className="navbar w-[85%] xl:w-[78%] mx-auto ">
                 <div className="navbar-start">
                     <div className="dropdown">
                         <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -42,7 +43,8 @@ const Navbar = () => {
                             {navItems}
                         </ul>
                     </div>
-                    <Link to='/' className=""><img className='w-15 md:w-25' src={navLogo} alt="" /></Link>
+                    <Link to='/' className=""><img className='w-15 md:w-25 hidden md:block' src={navLogo} alt="" /></Link>
+                    <Link to='/' className=""><img className='w-8 block md:hidden' src={logo} alt="" /></Link>
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1 gap-1 text-info font-semibold">
@@ -58,7 +60,7 @@ const Navbar = () => {
                     }
                     {/* <img className='w-8 h-8 rounded-4xl' src={user?.photoURL} alt="user" /> */}
                     {
-                        user ? <button onClick={handleLogOut} className="btn rounded-4xl border border-info">Logout</button> : <div className='flex gap-1'><Link to='/auth/login' className="btn rounded-4xl border border-info">Login</Link><Link to='/auth/register' className="btn rounded-4xl border border-info">Register</Link></div>
+                        user ? <button onClick={handleLogOut} className="btn rounded-4xl border border-info">Logout</button> : <div className='flex gap-1'><Link to='/auth/login' className="btn rounded-4xl border border-info">Login</Link></div>
                     }
                     {/* <Link to='/auth/login' className="btn">Login</Link> */}
 

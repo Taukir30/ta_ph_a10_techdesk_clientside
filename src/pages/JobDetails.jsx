@@ -78,8 +78,8 @@ const JobDetails = () => {
 
     return (
         <MyContainer>
-            <section className="container mx-auto max-w-6xl py-16 my-[60px]">
-                <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
+            <section className="container mx-auto  py-16 my-[60px]">
+                <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 xl:gap-20">
                     {/* Left Column: Job Details */}
                     <div className="lg:col-span-2">
                         {/* Job Title */}
@@ -112,18 +112,7 @@ const JobDetails = () => {
                             <div className="flex items-start space-x-3">
                                 {/* Icon */}
                                 <div className="shrink-0">
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        width={24}
-                                        height={24}
-                                        viewBox="0 0 24 24"
-                                        fill="none"
-                                        stroke="currentColor"
-                                        strokeWidth={2}
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                        className="w-6 h-6 text-gray-500"
-                                    >
+                                    <svg xmlns="http://www.w3.org/2000/svg" width={24} height={24} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round"  strokeLinejoin="round"  className="w-6 h-6 text-gray-500" >
                                         <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z" />
                                         <line x1={7} y1={7} x2="7.01" y2={7} />
                                     </svg>
@@ -138,24 +127,13 @@ const JobDetails = () => {
                             <div className="flex items-start space-x-3">
                                 {/* Icon */}
                                 <div className="shrink-0">
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        width={24}
-                                        height={24}
-                                        viewBox="0 0 24 24"
-                                        fill="none"
-                                        stroke="currentColor"
-                                        strokeWidth={2}
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                        className="w-6 h-6 text-gray-500"
-                                    >
+                                    <svg  xmlns="http://www.w3.org/2000/svg" width={24}  height={24}  viewBox="0 0 24 24"  fill="none" stroke="currentColor"  strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6 text-gray-500"  >
                                         <path d="M12 1.64l2.35 4.76 5.26.77-3.8 3.7.9 5.24L12 13.6l-4.7 2.47.9-5.23-3.8-3.71 5.25-.77L12 1.64z" />
                                         <path d="M12 1.64l2.35 4.76 5.26.77-3.8 3.7.9 5.24L12 13.6l-4.7 2.47.9-5.23-3.8-3.71 5.25-.77L12 1.64z" />
                                     </svg>
                                 </div>
                                 <div>
-                                    <p className="font-medium text-gray-900">Posted By:</p>
+                                    <p className="font-medium text-gray-900">Posted By</p>
                                     <p className="text-sm text-gray-600"> {details.postedBy} </p>
                                 </div>
                             </div>
@@ -164,18 +142,7 @@ const JobDetails = () => {
                             <div className="flex items-start space-x-3">
                                 {/* Icon */}
                                 <div className="shrink-0">
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        width={24}
-                                        height={24}
-                                        viewBox="0 0 24 24"
-                                        fill="none"
-                                        stroke="currentColor"
-                                        strokeWidth={2}
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                        className="w-6 h-6 text-gray-500"
-                                    >
+                                    <svg xmlns="http://www.w3.org/2000/svg"  width={24} height={24}  viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round"  strokeLinejoin="round"   className="w-6 h-6 text-gray-500" >
                                         <rect x={2} y={7} width={20} height={14} rx={2} ry={2} />
                                         <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
                                     </svg>
@@ -192,33 +159,23 @@ const JobDetails = () => {
                             <div className="flex items-start space-x-3">
                                 {/* Icon */}
                                 <div className="shrink-0">
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        width={24}
-                                        height={24}
-                                        viewBox="0 0 24 24"
-                                        fill="none"
-                                        stroke="currentColor"
-                                        strokeWidth={2}
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                        className="w-6 h-6 text-gray-500"
-                                    >
+                                    <svg xmlns="http://www.w3.org/2000/svg" width={24} height={24} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}     strokeLinecap="round"   strokeLinejoin="round"  className="w-6 h-6 text-gray-500"  >
                                         <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
                                         <polyline points="9 22 9 12 15 12 15 22" />
                                     </svg>
                                 </div>
                                 <div>
-                                    <p className="font-medium text-gray-900">Email:</p>
+                                    <p className="font-medium text-gray-900">Email</p>
                                     <p className="text-sm text-gray-600"> {details.userEmail} </p>
                                 </div>
                             </div>
                         </div>
                     </div>
+
                     {/* Right Column: Sidebar */}
                     <div className="lg:col-span-1 h-fit lg:sticky lg:top-8">
-                        <div className='flex justify-center items-center m-5'>
-                            <img className='rounded-lg' src={details.coverImage} alt="" />
+                        <div className='flex justify-center items-center my-5'>
+                            <img className='rounded-lg w-full' src={details.coverImage} alt="" />
                         </div>
                         <div className="border border-gray-200 rounded-lg p-6">
                             <h3 className="text-xl font-semibold text-gray-900">
