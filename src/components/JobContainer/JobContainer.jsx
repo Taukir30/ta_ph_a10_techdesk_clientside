@@ -28,8 +28,8 @@ const JobContainer = ({jobs}) => {
     // }
 
     return (
-        <div className="bg-white rounded-lg shadow-lg overflow-hidden">
-            <div className="divide-y divide-gray-200">
+        <div className="bg-white w-full rounded-lg shadow-lg overflow-hidden">
+            <div className="divide-y w-full divide-gray-200">
 
                 {/* Job card */}
                 {
