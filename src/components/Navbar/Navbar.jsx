@@ -53,15 +53,39 @@ const Navbar = () => {
                 </div>
                 <div className="navbar-end gap-3">
                     {
-                        user && <div className='relative group inline-block'>
-                            <img className='w-10 h-10 rounded-4xl border-2 border-[#FF7601]' src={user?.photoURL} alt="user" />
-                            <span className='text-xs absolute left-1/2 top-11 -translate-x-1/2 bg-black text-white px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10'>{user?.displayName}</span>
-                        </div>
+                        // user && <div className='relative group inline-block'>
+                        //     <img className='w-10 h-10 rounded-4xl border-2 border-[#FF7601]' src={user?.photoURL} alt="user" />
+                        //     <span className='text-xs absolute left-1/2 top-11 -translate-x-1/2 bg-black text-white px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10'>{user?.displayName}</span>
+                        // </div>
                     }
                     {/* <img className='w-8 h-8 rounded-4xl' src={user?.photoURL} alt="user" /> */}
                     {
-                        user ? <button onClick={handleLogOut} className="btn rounded-4xl border border-info">Logout</button> : <div className='flex gap-1'><Link to='/auth/login' className="btn rounded-4xl border border-info">Login</Link></div>
+                        // user ? <button onClick={handleLogOut} className="btn rounded-4xl border border-info">Logout</button> : <div className='flex gap-1'><Link to='/auth/login' className="btn rounded-4xl border border-info">Login</Link></div>
                     }
+                    {
+                        // user && <Link to='/dashboard' className="hidden md:flex btn btn-outline btn-secondary text-secondary rounded-4xl h-[35px] hover:text-[#FBBA72]">Dashboard</Link>
+                    }
+
+                    {
+                        user ?
+                            <div className="dropdown">
+                                <div tabIndex={0} role="button" className="btn btn-primary text-secondary shadow-none rounded-4xl h-[35px] pl-1">
+                                    <img src={user?.photoURL} alt="" className='h-[26px] w-[26px] rounded-4xl' />
+                                    {/* <IoIosArrowDown /> */}
+                                    Profile
+                                </div>
+                                <ul tabIndex="-1" className="dropdown-content menu bg-base-100 rounded-box z-1 w-27 p-1 shadow-sm">
+                                    <li className='text-center font-bold text-secondary my-2 py-1 border border-primary rounded-4xl'>{user.displayName}</li>
+
+                                    <li><Link to='/dashboard'>Dashboard</Link></li>
+                                    <li>
+                                        <button onClick={handleLogOut} className=''>Log out</button>
+                                    </li>
+                                </ul>
+                            </div> :
+                            <Link to='/auth/login' className="btn btn-primary text-secondary shadow-none rounded-4xl h-[35px]">Login</Link>
+                    }
+
                     {/* <Link to='/auth/login' className="btn">Login</Link> */}
 
                     {/* theme toggle */}

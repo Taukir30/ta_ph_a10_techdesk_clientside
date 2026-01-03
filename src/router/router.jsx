@@ -11,6 +11,8 @@ import AddJob from "../pages/AddJob";
 import MyJobs from "../pages/MyJobs";
 import UpdateJob from "../pages/UpdateJob";
 import AcceptedJobs from "../pages/AcceptedJobs";
+import DashboardLayout from "../layouts/DashboardLayout";
+import DashHome from "../pages/dashboard/DashHome";
 
 
 export const router = createBrowserRouter([
@@ -24,48 +26,58 @@ export const router = createBrowserRouter([
                 Component: Home
             },
             {
-                path: '/alljobs',
+                path: 'alljobs',
                 Component: AllJobs
             },
             {
-                path: '/jobdetails/:id',
+                path: 'jobdetails/:id',
                 element: <PrivateRoutes>
                             <JobDetails></JobDetails>
                         </PrivateRoutes>
             },
             {
-                path: '/addjob',
+                path: 'addjob',
                 element: <PrivateRoutes>
                             <AddJob></AddJob>
                         </PrivateRoutes>
             },
             {
-                path: '/myjobs',
+                path: 'myjobs',
                 element: <PrivateRoutes>
                             <MyJobs></MyJobs>
                         </PrivateRoutes>
             },
             {
-                path: '/updatejob/:id',
+                path: 'updatejob/:id',
                 element: <PrivateRoutes>
                             <UpdateJob></UpdateJob>
                         </PrivateRoutes>
             },
             {
-                path: '/acceptedjobs',
+                path: 'acceptedjobs',
                 element: <PrivateRoutes>
                             <AcceptedJobs></AcceptedJobs>
                         </PrivateRoutes>
             },
             {
-                path: '/auth/login',
+                path: 'auth/login',
                 Component: Login
             },
             {
-                path: '/auth/register',
+                path: 'auth/register',
                 Component: Register
             },
 
+        ]
+    },
+    {
+        path: '/dashboard',
+        element: <PrivateRoutes> <DashboardLayout></DashboardLayout> </PrivateRoutes>,
+        children: [
+            {
+                index: true,
+                Component: DashHome
+            }
         ]
     },
     {
