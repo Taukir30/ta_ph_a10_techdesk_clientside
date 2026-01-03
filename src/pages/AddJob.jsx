@@ -48,13 +48,13 @@ const AddJob = () => {
     }
 
     return (
-        <div className='mt-[60px] p-1 md:p-12'>
-            <MyContainer>
-                <h2 className="text-xl sm:text-3xl font-bold text-info mb-8">Add New Job</h2>
+        <div className='w-full'>
+            {/* <MyContainer> */}
+                <h2 className="text-sm sm:text-xl font-bold text-info mb-8">Add New Job</h2>
 
-                <div className="mx-auto bg-white p-5 md:p-12 shadow-sm border border-gray-200 rounded-lg">
+                <div className="mx-auto bg-white p-5 md:p-8 shadow-sm border border-gray-200 rounded-lg">
                     <form onSubmit={handleSubmit}>
-                        <div className="space-y-8">
+                        <div className="space-y-8 text-xs">
                             {/* Job Title */}
                             <div>
                                 <label htmlFor="job-title" className="block text-sm font-semibold text-gray-800 mb-2" >
@@ -155,7 +155,7 @@ const AddJob = () => {
                         </div>
                     </form>
                 </div>
-            </MyContainer>
+            {/* </MyContainer> */}
 
         </div>
     );

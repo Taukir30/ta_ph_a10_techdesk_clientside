@@ -2,7 +2,7 @@ import React from 'react';
 
 const DashHome = () => {
     return (
-        <div>
+        <div className=' w-full min-h-screen'>
             Dash Home
         </div>
     );

@@ -36,10 +36,10 @@ export const router = createBrowserRouter([
                         </PrivateRoutes>
             },
             {
-                path: 'addjob',
-                element: <PrivateRoutes>
-                            <AddJob></AddJob>
-                        </PrivateRoutes>
+                // path: 'addjob',
+                // element: <PrivateRoutes>
+                //             <AddJob></AddJob>
+                //         </PrivateRoutes>
             },
             {
                 path: 'myjobs',
@@ -77,6 +77,10 @@ export const router = createBrowserRouter([
             {
                 index: true,
                 Component: DashHome
+            },
+            {
+                path: 'addjob',
+                Component: AddJob
             }
         ]
     },

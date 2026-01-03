@@ -22,7 +22,7 @@ const Navbar = () => {
     const navItems = <>
         <li><NavLink to='/'>Home</NavLink></li>
         <li><NavLink to='/alljobs'>All Jobs</NavLink></li>
-        <li><NavLink to='/addjob'>Add a Job</NavLink></li>
+        <li><NavLink to='/dashboard/addjob'>Add a Job</NavLink></li>
         <li><NavLink to='/myjobs'>My Jobs</NavLink></li>
         <li><NavLink to='/acceptedjobs'>My Accepted Jobs</NavLink></li>
     </>
