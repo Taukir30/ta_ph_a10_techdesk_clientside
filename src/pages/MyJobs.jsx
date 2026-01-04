@@ -21,7 +21,7 @@ const MyJobs = () => {
         axiosInstance.get(`/alljobs?email=${user.email}`)
             .then(data => {
                 // console.log(data.data)
-                setMyJobs(data.data);
+                setMyJobs(data.data.result);
                 setLoading(false);
             })
 

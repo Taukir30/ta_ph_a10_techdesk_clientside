@@ -64,14 +64,14 @@ const UpdateJob = () => {
     }
 
     return (
-        <div className='mt-[60px] p-1 md:p-12'>
-            <MyContainer>
-                <h2 className="text-3xl sm:text-3xl text-center font-bold text-primary mb-5">
+        <div className='w-full'>
+            {/* <MyContainer> */}
+                <h2 className="text-base sm:text-2xl font-bold text-info mb-6">
                     Update Job
                 </h2>
-                <div className="mx-auto bg-white p-5 md:p-12 shadow-sm border border-gray-200 rounded-lg">
+                <div className="mx-auto bg-white p-5 md:p-5 shadow-sm border border-gray-200 rounded-lg">
                     <form onSubmit={handleUpdate}>
-                        <div className="space-y-8">
+                        <div className="space-y-5 text-xs">
                             {/* Job Title */}
                             <div>
                                 <label htmlFor="job-title" className="block text-sm font-semibold text-gray-800 mb-2" >
@@ -83,7 +83,7 @@ const UpdateJob = () => {
                                     id="job-title"
                                     placeholder="Job Title"
                                     defaultValue={details.title}
-                                    className="block w-full px-4 py-3 bg-gray-100 border border-gray-200 rounded-md text-gray-700 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:bg-white"
+                                    className="block w-full px-4 py-2 bg-gray-100 border border-gray-200 rounded-md text-gray-700 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:bg-white"
                                 />
                             </div>
 
@@ -97,7 +97,7 @@ const UpdateJob = () => {
                                     name="posted_by"
                                     id="job-title"
                                     defaultValue={details.postedBy}
-                                    className="block w-full px-4 py-3 bg-gray-100 border border-gray-200 rounded-md text-gray-700 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:bg-white"
+                                    className="block w-full px-4 py-2 bg-gray-100 border border-gray-200 rounded-md text-gray-700 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:bg-white"
                                 />
                             </div>
 
@@ -107,7 +107,7 @@ const UpdateJob = () => {
                                     Category <span className="text-red-500">*</span>
                                 </label>
                                 <div className="relative">
-                                    <select name="category" id="category" className="block w-full px-4 py-3 bg-gray-100 border border-gray-200 rounded-md text-gray-700 appearance-none focus:outline-none focus:ring-2 focus:ring-teal-500 focus:bg-white"                                 >
+                                    <select name="category" id="category" className="block w-full px-4 py-2 bg-gray-100 border border-gray-200 rounded-md text-gray-700 appearance-none focus:outline-none focus:ring-2 focus:ring-teal-500 focus:bg-white"                                 >
                                         <option>Select category</option>
                                         <option>Programming & Tech</option>
                                         <option>Graphics Design</option>
@@ -133,7 +133,7 @@ const UpdateJob = () => {
                                     Summary
                                     <span className="text-red-500">*</span>
                                 </label>
-                                <textarea name="summary" defaultValue={details.summary} id="summary" className='block w-full px-4 py-3 bg-white border border-gray-300 rounded-md text-gray-700 focus:outline-none focus:ring-2 focus:ring-teal-500'></textarea>
+                                <textarea name="summary" defaultValue={details.summary} id="summary" className='block w-full h-25 px-4 py-2 bg-white border border-gray-300 rounded-md text-gray-700 focus:outline-none focus:ring-2 focus:ring-teal-500'></textarea>
 
                             </div>
 
@@ -148,7 +148,7 @@ const UpdateJob = () => {
                                     id="job-title"
                                     placeholder="Image URL"
                                     defaultValue={details.coverImage}
-                                    className="block w-full px-4 py-3 bg-gray-100 border border-gray-200 rounded-md text-gray-700 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:bg-white"
+                                    className="block w-full px-4 py-2 bg-gray-100 border border-gray-200 rounded-md text-gray-700 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:bg-white"
                                 />
                             </div>
 
@@ -162,19 +162,19 @@ const UpdateJob = () => {
                                     name="email"
                                     id="job-title"
                                     defaultValue={details.userEmail}
-                                    className="block w-full px-4 py-3 bg-gray-100 border border-gray-200 rounded-md text-gray-700 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:bg-white"
+                                    className="block w-full px-4 py-2 bg-gray-100 border border-gray-200 rounded-md text-gray-700 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:bg-white"
                                 />
                             </div>
                         </div>
                         {/* Submit Button */}
-                        <div className="mt-10 pt-6 border-t border-gray-200">
-                            <button className="block w-40 rounded-4xl text-center bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-5 transition-colors mt-6">
+                        <div className="mt-5">
+                            <button className="block w-40 rounded-4xl text-sm text-center bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-5 transition-colors mt-6">
                                 Updete Job
                             </button>
                         </div>
                     </form>
                 </div>
-            </MyContainer>
+            {/* </MyContainer> */}
 
         </div>
     );

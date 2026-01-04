@@ -49,10 +49,10 @@ export const router = createBrowserRouter([
                 //         </PrivateRoutes>
             },
             {
-                path: 'updatejob/:id',
-                element: <PrivateRoutes>
-                    <UpdateJob></UpdateJob>
-                </PrivateRoutes>
+                // path: 'updatejob/:id',
+                // element: <PrivateRoutes>
+                //     <UpdateJob></UpdateJob>
+                // </PrivateRoutes>
             },
             {
                 // path: 'acceptedjobs',
@@ -100,6 +100,10 @@ export const router = createBrowserRouter([
             {
                 path: 'myjobs',
                 Component: MyJobs
+            },
+            {
+                path: 'updatejob/:id',
+                Component: UpdateJob
             },
             {
                 path: 'acceptedjobs',

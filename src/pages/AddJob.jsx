@@ -44,7 +44,7 @@ const AddJob = () => {
                 if (data.data.insertedId) {
                     toast("Job Added Successfully!");
                     form.reset();
-                    navigate('/myjobs');
+                    navigate('/dashboard/myjobs');
                 }
             })
     }
@@ -93,13 +93,13 @@ const AddJob = () => {
                                 <div className="relative">
                                     <select name="category" id="category" className="block w-full px-4 py-2 bg-gray-100 border border-gray-200 rounded-md text-gray-700 appearance-none focus:outline-none focus:ring-2 focus:ring-teal-500 focus:bg-white"                                 >
                                         <option>Select category</option>
-                                        <option>Programming & Tech</option>
+                                        <option>Programming</option>
                                         <option>Graphics Design</option>
                                         <option>Digital Marketing</option>
-                                        <option>Writting & Translation</option>
-                                        <option>Video & Animation</option>
+                                        <option>Writting</option>
+                                        <option>Video and Animation</option>
                                         <option>AI Services</option>
-                                        <option>Music & Audio</option>
+                                        <option>Music and Audio</option>
                                         <option>Consultancy</option>
                                     </select>
 
