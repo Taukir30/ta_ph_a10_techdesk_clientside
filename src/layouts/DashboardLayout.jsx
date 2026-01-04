@@ -59,7 +59,7 @@ const DashboardLayout = () => {
                         Open drawer
                     </label> */}
 
-                    <div className='p-5 w-full'>
+                    <div className='px-2 md:px-8 py-6 w-full'>
                         <Outlet></Outlet>
                     </div>
 
@@ -68,8 +68,10 @@ const DashboardLayout = () => {
                     <label htmlFor="my-drawer-3" aria-label="close sidebar" className="drawer-overlay"></label>
                     <ul className="menu bg-base-200 min-h-full w-60 p-4">
                         {/* Sidebar content here */}
+                        <li><NavLink to='/dashboard'>Home</NavLink></li>
                         <li><NavLink to='/dashboard/addjob'>Add New Job</NavLink></li>
-                        <li><NavLink>Sidebar Item 2</NavLink></li>
+                        <li><NavLink to='/dashboard/myjobs'>My Posted Jobs</NavLink></li>
+                        <li><NavLink to='/dashboard/acceptedjobs'>Accepted Jobs</NavLink></li>
                     </ul>
                 </div>
             </div>

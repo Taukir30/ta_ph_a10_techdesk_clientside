@@ -13,6 +13,7 @@ import UpdateJob from "../pages/UpdateJob";
 import AcceptedJobs from "../pages/AcceptedJobs";
 import DashboardLayout from "../layouts/DashboardLayout";
 import DashHome from "../pages/dashboard/DashHome";
+import AuthLayout from "../layouts/AuthLayout";
 
 
 export const router = createBrowserRouter([
@@ -32,8 +33,8 @@ export const router = createBrowserRouter([
             {
                 path: 'jobdetails/:id',
                 element: <PrivateRoutes>
-                            <JobDetails></JobDetails>
-                        </PrivateRoutes>
+                    <JobDetails></JobDetails>
+                </PrivateRoutes>
             },
             {
                 // path: 'addjob',
@@ -42,32 +43,46 @@ export const router = createBrowserRouter([
                 //         </PrivateRoutes>
             },
             {
-                path: 'myjobs',
-                element: <PrivateRoutes>
-                            <MyJobs></MyJobs>
-                        </PrivateRoutes>
+                // path: 'myjobs',
+                // element: <PrivateRoutes>
+                //             <MyJobs></MyJobs>
+                //         </PrivateRoutes>
             },
             {
                 path: 'updatejob/:id',
                 element: <PrivateRoutes>
-                            <UpdateJob></UpdateJob>
-                        </PrivateRoutes>
+                    <UpdateJob></UpdateJob>
+                </PrivateRoutes>
             },
             {
-                path: 'acceptedjobs',
-                element: <PrivateRoutes>
-                            <AcceptedJobs></AcceptedJobs>
-                        </PrivateRoutes>
+                // path: 'acceptedjobs',
+                // element: <PrivateRoutes>
+                //             <AcceptedJobs></AcceptedJobs>
+                //         </PrivateRoutes>
             },
             {
-                path: 'auth/login',
+                // path: 'auth/login',
+                // Component: Login
+            },
+            {
+                // path: 'auth/register',
+                // Component: Register
+            },
+
+        ]
+    },
+    {
+        path: '/auth',
+        Component: AuthLayout,
+        children: [
+            {
+                path: 'login',
                 Component: Login
             },
             {
-                path: 'auth/register',
+                path: 'register',
                 Component: Register
-            },
-
+            }
         ]
     },
     {
@@ -81,6 +96,14 @@ export const router = createBrowserRouter([
             {
                 path: 'addjob',
                 Component: AddJob
+            },
+            {
+                path: 'myjobs',
+                Component: MyJobs
+            },
+            {
+                path: 'acceptedjobs',
+                Component: AcceptedJobs
             }
         ]
     },

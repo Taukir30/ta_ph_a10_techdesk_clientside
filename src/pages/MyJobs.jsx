@@ -34,13 +34,13 @@ const MyJobs = () => {
     }
 
     return (
-        <section className="py-20 sm:py-24">
-            <MyContainer>
-                <div className="container mx-auto px-1 sm:px-6 lg:px-8 max-w-5xl">
+        <section className="w-full min-h-screen">
+            {/* <MyContainer> */}
+                <div className="container mx-auto ">
 
                     {/* Section Header */}
                     <div className="flex justify-between items-center mb-8">
-                        <h2 className="text-xl sm:text-3xl font-bold text-info">My Posted Jobs</h2>
+                        <h2 className="text-xl sm:text-xl font-bold text-info">My Posted Jobs</h2>
                         <Link to='/alljobs' className="flex items-center text-sm font-medium text-primary hover:text-blue-800 transition-colors"  >
                             All Jobs
                             {/* Arrow Icon */}
@@ -68,7 +68,7 @@ const MyJobs = () => {
                     </div>
 
                 </div>
-            </MyContainer>
+            {/* </MyContainer> */}
         </section>
     );
 };

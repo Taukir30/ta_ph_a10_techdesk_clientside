@@ -4,10 +4,12 @@ import { Link, useLocation, useNavigate } from 'react-router';
 import Swal from 'sweetalert2';
 import { AuthContext } from '../provider/AuthContext';
 import { FcGoogle } from 'react-icons/fc';
-import { toast } from 'react-toastify';
+import { useForm } from 'react-hook-form';
 
 
 const Login = () => {
+
+    const { register, handleSubmit, setValue, formState: { errors } } = useForm();
 
     const { logInUser, googleLogin } = use(AuthContext);
 
@@ -17,29 +19,47 @@ const Login = () => {
 
     const navigate = useNavigate();
 
+    const DEMO_USER = {
+        email: "tata@gmail.com",
+        password: "Tata@1"
+    };
+
     //password toggle function
     const handleToggle = (e) => {
         e.preventDefault();
         setPassToggle(!passToggle);
     }
 
-    const handleLogin = e => {
-        e.preventDefault();
+    const handleLogin = data => {
 
-        const form = e.target;
-        const email = form.email.value;
-        const password = form.password.value;
+        // const form = e.target;
+        const email = data.email;
+        const password = data.password;
+
+        // console.log(email, password)
 
         logInUser(email, password)
-            .then( result => {
-                // console.log(result.user);
-                toast(`${result.user.displayName}, Log In Successful !`);
-                form.reset();
-                navigate(`${location.state? location.state : "/"}`);
+            .then(result => {
+
+                Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: `${result.user.displayName}, Log In Successful !`,
+                    showConfirmButton: false,
+                    timer: 1000
+                });
+
+                navigate(`${location.state ? location.state : "/"}`);
             })
-            .catch( error => {
-                toast.error(error.message);
+            .catch(error => {
                 // console.log(error)
+                Swal.fire({
+                    position: "top-end",
+                    icon: "error",
+                    title: error.message,
+                    showConfirmButton: false,
+                    timer: 1500
+                });
             })
 
     }
@@ -60,6 +80,25 @@ const Login = () => {
             })
     }
 
+    // function for autofill user credentials
+    const handleDemoUserLogin = (e) => {
+        e.preventDefault()
+        // auto-fill inputs
+        setValue("email", DEMO_USER.email);
+        setValue("password", DEMO_USER.password);
+
+        // login immediately
+        // logInUser(DEMO_USER.email, DEMO_USER.password)
+        //     .then(result => {
+        //         toast.success("Demo user login successful");
+        //         navigate(location.state ? location.state : "/");
+        //     })
+        //     .catch(error => {
+        //         toast.error(error.message);
+        //         console.error(error);
+        //     });
+    };
+
     return (
         <div className="grid lg:grid-cols-3 md:grid-cols-2 items-center">
             <div className="max-md:order-1 md:min-h-screen w-full h-full">
@@ -67,17 +106,18 @@ const Login = () => {
             </div>
 
             <div className="lg:col-span-2 w-full p-8 max-w-lg mx-auto">
-                <form onSubmit={handleLogin}>
+                <form onSubmit={handleSubmit(handleLogin)}>
                     <div className="mb-8">
                         <h1 className="text-info text-2xl font-bold">Login Now</h1>
                     </div>
 
-                    <div className="space-y-6">
+                    <div className="space-y-3">
 
+                        {/* email field */}
                         <div>
                             <label className="text-info text-sm font-medium mb-2 block">Email</label>
                             <div className="relative flex items-center">
-                                <input name="email" type="email" required className="text-slate-900 bg-white border border-gray-300 w-full text-sm pl-4 pr-8 py-2.5 rounded-md outline-blue-500" placeholder="Enter email" />
+                                <input type="email" {...register('email', { required: true })} className="text-slate-900 bg-white border border-gray-300 w-full text-sm pl-4 pr-8 py-2.5 rounded-md outline-blue-500" placeholder="Enter email" />
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="#bbb" stroke="#bbb" className="w-4 h-4 absolute right-4" viewBox="0 0 682.667 682.667">
                                     <defs>
                                         <clipPath id="a" clipPathUnits="userSpaceOnUse">
@@ -90,22 +130,48 @@ const Login = () => {
                                     </g>
                                 </svg>
                             </div>
+                            {
+                                errors.email?.type === 'required' &&
+                                <p className='text-red-500 text-xs mt-1'>Email is required</p>
+                            }
                         </div>
+
+                        {/* password field */}
                         <div>
                             <label className="text-info text-sm font-medium mb-2 block">Password</label>
                             <div className="relative flex items-center">
-                                <input name="password" type={passToggle ? "text" : "password"} required className="text-slate-900 bg-white border border-gray-300 w-full text-sm pl-4 pr-8 py-2.5 rounded-md outline-blue-500" placeholder="Enter password" />
+
+                                <input {...register('password', {
+                                    required: true,
+                                    minLength: 6,
+                                    pattern: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).+$/
+                                })} type={passToggle ? "text" : "password"}
+                                    className="text-slate-900 bg-white border border-gray-300 w-full text-sm pl-4 pr-8 py-2.5 rounded-md outline-blue-500" placeholder="Enter password" />
+
                                 <button onClick={handleToggle}>
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="#bbb" stroke="#bbb" className="w-4 h-4 absolute right-4 top-4 cursor-pointer" viewBox="0 0 128 128">
                                         <path d="M64 104C22.127 104 1.367 67.496.504 65.943a4 4 0 0 1 0-3.887C1.367 60.504 22.127 24 64 24s62.633 36.504 63.496 38.057a4 4 0 0 1 0 3.887C126.633 67.496 105.873 104 64 104zM8.707 63.994C13.465 71.205 32.146 96 64 96c31.955 0 50.553-24.775 55.293-31.994C114.535 56.795 95.854 32 64 32 32.045 32 13.447 56.775 8.707 63.994zM64 88c-13.234 0-24-10.766-24-24s10.766-24 24-24 24 10.766 24 24-10.766 24-24 24zm0-40c-8.822 0-16 7.178-16 16s7.178 16 16 16 16-7.178 16-16-7.178-16-16-16z" data-original="#000000"></path>
                                     </svg>
                                 </button>
-                            </div>
-                        </div>
-                        <div className="flex items-center">
 
-                            <label className="ml-3 block text-sm text-slate-600">
-                                <a href="javascript:void(0);" className="text-blue-600 font-medium hover:underline ml-1">Forgot Password</a>
+                            </div>
+                            {
+                                errors.password?.type === 'required' &&
+                                <p className='text-red-500 text-xs mt-1'>Password is required</p>
+                            }
+                            {
+                                errors.password?.type === 'minLength' &&
+                                <p className='text-red-500 text-xs mt-1'>Password must be 6 character or longer</p>
+                            }
+                            {
+                                errors.password?.type === 'pattern' &&
+                                <p className='text-red-500 text-xs mt-1'>Password must contain minimum one uppercase, one lower case, one number and one special characterr</p>
+                            }
+                        </div>
+
+                        <div className="flex items-center">
+                            <label className="block text-sm text-slate-600">
+                                <a href="javascript:void(0);" className="text-blue-600 font-medium hover:underline">Forgot Password</a>
                             </label>
                         </div>
                     </div>
@@ -121,6 +187,7 @@ const Login = () => {
                         {/* google button */}
                         <button onClick={handleGoogleLogin} className='btn btn-outline border-primary text-primary btn-success w-full'><FcGoogle size={20} /> Login with Google</button>
 
+                        <button onClick={handleDemoUserLogin} className='btn btn-outline border-secondary btn-success w-full'>Fill User Credentials</button>
                     </div>
                     <p className="text-slate-600 text-sm mt-6 text-center">New to our site? <Link to='/auth/register' className="text-blue-600 font-medium hover:underline ml-1">Register</Link></p>
                 </form>

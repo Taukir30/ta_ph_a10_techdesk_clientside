@@ -22,9 +22,13 @@ const Navbar = () => {
     const navItems = <>
         <li><NavLink to='/'>Home</NavLink></li>
         <li><NavLink to='/alljobs'>All Jobs</NavLink></li>
-        <li><NavLink to='/dashboard/addjob'>Add a Job</NavLink></li>
-        <li><NavLink to='/myjobs'>My Jobs</NavLink></li>
-        <li><NavLink to='/acceptedjobs'>My Accepted Jobs</NavLink></li>
+        {
+            user && <>
+                <li><NavLink to='/dashboard/addjob'>Add New Job</NavLink></li>
+                <li><NavLink to='/dashboard/myjobs'>My Jobs</NavLink></li>
+                <li><NavLink to='/dashboard/acceptedjobs'>My Accepted Jobs</NavLink></li>
+            </>
+        }
     </>
 
     if (loading) {

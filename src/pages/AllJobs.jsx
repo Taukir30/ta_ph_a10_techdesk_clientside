@@ -10,18 +10,32 @@ const AllJobs = () => {
     const [allJobs, setAllJobs] = useState([]);
     const [loading, setLoading] = useState(true);
 
+    const [currentPage, setCurrentPage] = useState(0);
+    const [sort, setSort] = useState("createdAt");
+    const [order, setOrder] = useState("desc");
+
+    const limit = 5;
+
     const axiosInstance = useAxios();
 
     useEffect(() => {
         setLoading(true);
 
-        axiosInstance.get('/alljobs')
+        axiosInstance.get(`/alljobs?sort=${sort}&order=${order}`)
             .then(data => {
                 // console.log(data.data)
                 setAllJobs(data.data);
                 setLoading(false);
             })
-    }, [axiosInstance])
+    }, [axiosInstance, sort, order])
+
+    const handleSelect = e => {
+        const sortText = e.target.value;
+        console.log(sortText);
+        setSort(sortText.split("-")[0]);
+        setOrder(sortText.split("-")[1]);
+    }
+    console.log(sort, order)
 
     // console.log(latestJobs)
 
@@ -43,14 +57,14 @@ const AllJobs = () => {
                     {/* Section Header */}
                     <div className="flex justify-between items-center mb-8">
                         <h2 className="text-xl sm:text-3xl font-bold text-info">All Jobs</h2>
-                        <Link to='/myjobs' className="flex items-center text-sm font-medium text-primary hover:text-blue-800 transition-colors"  >
-                            My Jobs
-                            {/* Arrow Icon */}
-                            <svg xmlns="http://www.w3.org/2000/svg" width={20} height={20} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className="ml-1" >
-                                <line x1={5} y1={12} x2={19} y2={12} />
-                                <polyline points="12 5 19 12 12 19" />
-                            </svg>
-                        </Link>
+
+                        <select onChange={handleSelect} defaultValue="Pick a color" className="select rounded-4xl border border-secondary w-40 md:w-45">
+                            <option disabled={true}>Sort</option>
+                            <option value={"created_at-desc"}>Date : High - Low</option>
+                            <option value={"created_at-asc"}>Date : Low - High</option>
+                            <option value={"budget-asc"}>Rate : Low - High</option>
+                            <option value={"budget-desc"}>Rate : Low - High</option>
+                        </select>
                     </div>
 
                     {/* Job List Container */}

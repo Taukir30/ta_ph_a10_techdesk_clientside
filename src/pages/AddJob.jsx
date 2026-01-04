@@ -23,6 +23,7 @@ const AddJob = () => {
         const summary = form.summary.value;
         const coverImage = form.imageUrl.value;
         const email = form.email.value;
+        const budget = form.budget.value;
         const today = new Date().toISOString().split('T')[0];
 
         const newJob = {
@@ -32,6 +33,7 @@ const AddJob = () => {
             summary: summary,
             coverImage: coverImage,
             userEmail: email,
+            budget: budget,
             created_at: today
         }
         console.log(newJob)
@@ -50,11 +52,11 @@ const AddJob = () => {
     return (
         <div className='w-full'>
             {/* <MyContainer> */}
-                <h2 className="text-sm sm:text-xl font-bold text-info mb-8">Add New Job</h2>
+                <h2 className="text-base sm:text-xl font-bold text-info mb-6">Add New Job</h2>
 
                 <div className="mx-auto bg-white p-5 md:p-8 shadow-sm border border-gray-200 rounded-lg">
                     <form onSubmit={handleSubmit}>
-                        <div className="space-y-8 text-xs">
+                        <div className="space-y-5 text-xs">
                             {/* Job Title */}
                             <div>
                                 <label htmlFor="job-title" className="block text-sm font-semibold text-gray-800 mb-2" >
@@ -65,7 +67,7 @@ const AddJob = () => {
                                     name="job_title"
                                     id="job-title"
                                     placeholder="Job Title"
-                                    className="block w-full px-4 py-3 bg-gray-100 border border-gray-200 rounded-md text-gray-700 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:bg-white"
+                                    className="block w-full px-4 py-2 bg-gray-100 border border-gray-200 rounded-md text-gray-700 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:bg-white"
                                 />
                             </div>
 
@@ -77,9 +79,9 @@ const AddJob = () => {
                                 <input
                                     type="text"
                                     name="posted_by"
-                                    id="job-title"
+                                    id="postedBy"
                                     defaultValue={user.displayName}
-                                    className="block w-full px-4 py-3 bg-gray-100 border border-gray-200 rounded-md text-gray-700 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:bg-white"
+                                    className="block w-full px-4 py-2 bg-gray-100 border border-gray-200 rounded-md text-gray-700 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:bg-white"
                                 />
                             </div>
 
@@ -89,7 +91,7 @@ const AddJob = () => {
                                     Category <span className="text-red-500">*</span>
                                 </label>
                                 <div className="relative">
-                                    <select name="category" id="category" className="block w-full px-4 py-3 bg-gray-100 border border-gray-200 rounded-md text-gray-700 appearance-none focus:outline-none focus:ring-2 focus:ring-teal-500 focus:bg-white"                                 >
+                                    <select name="category" id="category" className="block w-full px-4 py-2 bg-gray-100 border border-gray-200 rounded-md text-gray-700 appearance-none focus:outline-none focus:ring-2 focus:ring-teal-500 focus:bg-white"                                 >
                                         <option>Select category</option>
                                         <option>Programming & Tech</option>
                                         <option>Graphics Design</option>
@@ -127,9 +129,23 @@ const AddJob = () => {
                                 <input
                                     type="text"
                                     name="imageUrl"
-                                    id="job-title"
+                                    id="job-image"
                                     placeholder="Image URL"
-                                    className="block w-full px-4 py-3 bg-gray-100 border border-gray-200 rounded-md text-gray-700 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:bg-white"
+                                    className="block w-full px-4 py-2 bg-gray-100 border border-gray-200 rounded-md text-gray-700 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:bg-white"
+                                />
+                            </div>
+
+                            {/* Budget */}
+                            <div>
+                                <label htmlFor="job-title" className="block text-sm font-semibold text-gray-800 mb-2" >
+                                    Budget <span className="text-red-500">*</span>
+                                </label>
+                                <input
+                                    type="text"
+                                    name="budget"
+                                    id="job-budget"
+                                    placeholder="Budget"
+                                    className="block w-full px-4 py-2 bg-gray-100 border border-gray-200 rounded-md text-gray-700 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:bg-white"
                                 />
                             </div>
 
@@ -141,14 +157,14 @@ const AddJob = () => {
                                 <input
                                     type="email"
                                     name="email"
-                                    id="job-title"
+                                    id="job-email"
                                     defaultValue={user.email}
-                                    className="block w-full px-4 py-3 bg-gray-100 border border-gray-200 rounded-md text-gray-700 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:bg-white"
+                                    className="block w-full px-4 py-2 bg-gray-100 border border-gray-200 rounded-md text-gray-700 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:bg-white"
                                 />
                             </div>
                         </div>
                         {/* Submit Button */}
-                        <div className="mt-10 pt-6 border-t border-gray-200">
+                        <div className="mt-10">
                             <button className="block w-40 rounded-4xl text-center bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-5 transition-colors mt-6">
                                 Submit Job
                             </button>

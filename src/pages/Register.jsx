@@ -1,6 +1,6 @@
 import React, { use, useState } from 'react';
 import laptopImg from '../assets/laptop.jpg'
-import { Link, useNavigate } from 'react-router';
+import { Link, useLocation, useNavigate } from 'react-router';
 import { AuthContext } from '../provider/AuthContext';
 import { FcGoogle } from 'react-icons/fc';
 import Swal from 'sweetalert2';
@@ -14,6 +14,7 @@ const Register = () => {
     const [error, setError] = useState('');
 
     const navigate = useNavigate();
+    const location = useLocation();
 
     //password toggle function
     const handleToggle = (e) => {
@@ -56,7 +57,8 @@ const Register = () => {
 
                 updateUser(result.user, userProfile).then().catch();
 
-                navigate("/auth/login");
+                navigate(`${location.state ? location.state : "/"}`);
+
             })
             .catch(error => {
                 console.log(error);
@@ -83,7 +85,7 @@ const Register = () => {
     }
 
     return (
-        <div className="grid lg:grid-cols-3 md:grid-cols-2 items-center mt-[60px]">
+        <div className="grid lg:grid-cols-3 md:grid-cols-2 items-center ">
             <div className="max-md:order-1 md:min-h-screen w-full h-full">
                 <img src={laptopImg} className="w-full h-full object-cover" alt="signup-image" />
             </div>
