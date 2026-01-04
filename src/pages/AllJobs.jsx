@@ -13,6 +13,7 @@ const AllJobs = () => {
     const [currentPage, setCurrentPage] = useState(0);
     const [sort, setSort] = useState("createdAt");
     const [order, setOrder] = useState("desc");
+    const [dataCount, setDataCount] = useState(5);
 
     const limit = 5;
 
@@ -21,13 +22,17 @@ const AllJobs = () => {
     useEffect(() => {
         setLoading(true);
 
-        axiosInstance.get(`/alljobs?sort=${sort}&order=${order}`)
+        axiosInstance.get(`/alljobs?limit=${limit}&skip=${currentPage * limit}&sort=${sort}&order=${order}`)
             .then(data => {
-                // console.log(data.data)
-                setAllJobs(data.data);
+                console.log(data.data)
+                setAllJobs(data.data.result);
+                setDataCount(data.data.total);
                 setLoading(false);
             })
-    }, [axiosInstance, sort, order])
+    }, [axiosInstance, sort, order, currentPage])
+
+    const totalPages = Math.ceil(dataCount / limit);
+    // console.log(totalPages)
 
     const handleSelect = e => {
         const sortText = e.target.value;
@@ -70,6 +75,19 @@ const AllJobs = () => {
                     {/* Job List Container */}
                     <JobContainer jobs={allJobs}></JobContainer>
 
+                    <div className='flex justify-center flex-wrap py-5 gap-1'>
+                        {
+                            currentPage > 0 && <button onClick={() => setCurrentPage(currentPage - 1)} className='btn'>Prev</button>
+                        }
+                        {
+                            [...Array(totalPages).keys()].map((i) => (
+                                <button onClick={() => setCurrentPage(i)} className={`btn ${i === currentPage && 'btn-primary'}`}>{i}</button>
+                            ))
+                        }
+                        {
+                            currentPage < totalPages - 1 && <button onClick={() => setCurrentPage(currentPage + 1)} className='btn'>Next</button>
+                        }
+                    </div>
                 </div>
             </MyContainer>
         </section>
