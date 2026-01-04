@@ -14,6 +14,8 @@ const AllJobs = () => {
     const [sort, setSort] = useState("createdAt");
     const [order, setOrder] = useState("desc");
     const [dataCount, setDataCount] = useState(5);
+    const [searchText, setSearchText] = useState('');
+    const [category, setCategory] = useState("")
 
     const limit = 5;
 
@@ -22,14 +24,14 @@ const AllJobs = () => {
     useEffect(() => {
         setLoading(true);
 
-        axiosInstance.get(`/alljobs?limit=${limit}&skip=${currentPage * limit}&sort=${sort}&order=${order}`)
+        axiosInstance.get(`/alljobs?category=${category}&searchText=${searchText}&limit=${limit}&skip=${currentPage * limit}&sort=${sort}&order=${order}`)
             .then(data => {
                 console.log(data.data)
                 setAllJobs(data.data.result);
                 setDataCount(data.data.total);
                 setLoading(false);
             })
-    }, [axiosInstance, sort, order, currentPage])
+    }, [axiosInstance, sort, order, currentPage, searchText, category])
 
     const totalPages = Math.ceil(dataCount / limit);
     // console.log(totalPages)
@@ -40,13 +42,14 @@ const AllJobs = () => {
         setSort(sortText.split("-")[0]);
         setOrder(sortText.split("-")[1]);
     }
-    console.log(sort, order)
+    console.log(category)
 
-    // console.log(latestJobs)
+    // console.log(searchText)
 
-    if (loading) {
-        return <Loading></Loading>
-    }
+    //showing loading like this will reset the search input field --note my taukir
+    // if (loading) {
+    //     return <Loading></Loading>
+    // }
 
     return (
         <section className="py-20 sm:py-24">
@@ -59,9 +62,23 @@ const AllJobs = () => {
                         </h2>
                     </div>
 
+                    {loading && (
+                        <div className="flex justify-center py-10">
+                            <Loading />
+                        </div>
+                    )}
+
                     {/* Section Header */}
                     <div className="flex justify-between items-center mb-8">
-                        <h2 className="text-xl sm:text-3xl font-bold text-info">All Jobs</h2>
+                        <label className="input rounded-4xl border border-secondary w-40 md:w-55">
+                            <svg className="h-[1em] opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <g strokeLinejoin="round" strokeLinecap="round" strokeWidth="2.5" fill="none" stroke="currentColor" >
+                                    <circle cx="11" cy="11" r="8"></circle>
+                                    <path d="m21 21-4.3-4.3"></path>
+                                </g>
+                            </svg>
+                            <input onChange={(e) => setSearchText(e.target.value)} type="search" className="grow" placeholder="Search" />
+                        </label>
 
                         <select onChange={handleSelect} defaultValue="Pick a color" className="select rounded-4xl border border-secondary w-40 md:w-45">
                             <option disabled={true}>Sort</option>
@@ -72,8 +89,58 @@ const AllJobs = () => {
                         </select>
                     </div>
 
-                    {/* Job List Container */}
-                    <JobContainer jobs={allJobs}></JobContainer>
+                    <div className='grid grid-cols-1 md:grid-cols-5 gap-x-0 md:gap-x-2 gap-y-2 md:gap-y-0'>
+                        <div className='col-span-1'>
+                            <div className="p-6 bg-white rounded-lg shadow-md font-sans">
+                                <h2 className="text-xl font-bold text-gray-900 mb-8">Filters</h2>
+
+                                <div className="flex items-center justify-between mb-4">
+                                    <h3 className="text-base font-bold text-gray-900">Categories</h3>
+                                    <button
+                                        type="button"
+                                        className="text-blue-600 text-sm hover:text-blue-800 hover:cursor-pointer font-medium transition-colors"
+                                        onClick={()=> setCategory("")}
+                                    >
+                                        Clear
+                                    </button>
+                                </div>
+
+                                <div className="space-y-4">
+
+                                    <label className="flex items-center cursor-pointer">
+                                        <input
+                                            type="radio"
+                                            name="category"
+                                            value="Programming & Tech"
+                                            checked={category === "Programming"}
+                                            onChange={()=> setCategory('Programming')}
+                                            className="h-3 w-3"
+                                        />
+                                        <span className="ml-2 text-xs">Programming & Tech</span>
+                                    </label>
+
+                                    <label className="flex items-center cursor-pointer">
+                                        <input
+                                            type="radio"
+                                            name="category"
+                                            value="Web Development"
+                                            checked={category === "Web Development"}
+                                            onChange={()=> setCategory('Web Development')}
+                                            className="h-3 w-3"
+                                        />
+                                        <span className="ml-2 text-xs">Web Development</span>
+                                    </label>
+
+                                    
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className='col-span-1 md:col-span-4'>
+                            {/* Job List Container */}
+                            <JobContainer jobs={allJobs}></JobContainer>
+                        </div>
+                    </div>
 
                     <div className='flex justify-center flex-wrap py-5 gap-1'>
                         {
@@ -81,7 +148,7 @@ const AllJobs = () => {
                         }
                         {
                             [...Array(totalPages).keys()].map((i) => (
-                                <button onClick={() => setCurrentPage(i)} className={`btn ${i === currentPage && 'btn-primary'}`}>{i}</button>
+                                <button key={i} onClick={() => setCurrentPage(i)} className={`btn ${i === currentPage && 'btn-primary'}`}>{i + 1}</button>
                             ))
                         }
                         {
